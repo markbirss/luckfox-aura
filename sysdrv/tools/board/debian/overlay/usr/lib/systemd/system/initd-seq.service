@@ -1,0 +1,16 @@
+[Unit]
+Description=Run legacy /etc/init.dS??* scripts
+DefaultDependencies=no
+Before=multi-user.target shutdown.target
+After=local-fs.target
+
+[Service]
+Environment="PATH=/oem/usr/bin:/oem/usr/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+Environment="LD_LIBRARY_PATH=/oem/usr/lib:/usr/lib:/lib"
+Type=oneshot
+ExecStart=/usr/bin/run_initd.sh start
+ExecStop=/usr/bin/run_initd.sh stop
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

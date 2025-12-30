@@ -1,0 +1,29 @@
+KERNEL!="sd[a-z]*", GOTO="udisk_auto_mount_end"
+SUBSYSTEM!="block", GOTO="udisk_auto_mount_end"
+ENV{ID_BUS}!="usb", GOTO="udisk_auto_mount_end"
+ENV{ID_FS_TYPE}=="", GOTO="udisk_auto_mount_end"
+
+ACTION=="add", RUN+="/bin/mkdir -p /tmp/%k"
+
+ACTION=="add", ENV{mount_options_vfat}="rw,uid=1000,gid=1000,dmask=022,fmask=133,noatime"
+ACTION=="add", ENV{ID_FS_TYPE}=="vfat", RUN+="/bin/mount -t vfat -o %E{mount_options_vfat} /dev/%k /tmp/%k"
+
+ACTION=="add", ENV{mount_options_ntfs}="rw,uid=1000,gid=1000,dmask=022,fmask=133,noatime"
+ACTION=="add", ENV{ID_FS_TYPE}=="ntfs", RUN+="/bin/mount -t ntfs-3g -o %E{mount_options_ntfs} /dev/%k /tmp/%k"
+
+ACTION=="add", ENV{mount_options_exfat}="rw,uid=1000,gid=1000,dmask=022,fmask=133,noatime"
+ACTION=="add", ENV{ID_FS_TYPE}=="exfat",RUN+="/bin/mount -t exfat -o %E{mount_options_exfat} /dev/%k /tmp/%k"
+ACTION=="add", ENV{ID_FS_TYPE}=="exfat", RUN+="/bin/mount -t exfat-fuse -o %E{mount_options_exfat} /dev/%k /tmp/%k"
+
+ACTION=="add", ENV{mount_options_ext2}="users,exec,noatime"
+ACTION=="add", ENV{ID_FS_TYPE}=="ext2", RUN+="/bin/mount -t ext2 -o %E{mount_options_ext2} /dev/%k /tmp/%k"
+
+ACTION=="add", ENV{mount_options_ext3}="users,exec,noatime"
+ACTION=="add", ENV{ID_FS_TYPE}=="ext3", RUN+="/bin/mount -t ext3 -o %E{mount_options_ext3} /dev/%k /tmp/%k"
+
+ACTION=="add", ENV{mount_options_ext4}="users,exec,noatime"
+ACTION=="add", ENV{ID_FS_TYPE}=="ext4", RUN+="/bin/mount -t ext4 -o %E{mount_options_ext4} /dev/%k /tmp/%k"
+
+ACTION=="remove", RUN+="/bin/umount /tmp/%k"
+
+LABEL="udisk_auto_mount_end"

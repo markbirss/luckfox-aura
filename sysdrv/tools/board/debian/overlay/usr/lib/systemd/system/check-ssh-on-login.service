@@ -1,0 +1,12 @@
+[Unit]
+Description=Check and restart SSH once after user login
+After=network-online.target ssh.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/check_ssh_once.sh
+Restart=no
+
+[Install]
+WantedBy=default.target

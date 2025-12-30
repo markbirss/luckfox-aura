@@ -1,0 +1,52 @@
+v1.28 revision(2025/01/22)
+1.add -1 to set single idblock for emmc and nor
+2.add -d to set idblock start sector for nor
+
+v1.27 revision(2023/10/25)
+1.fix check env condition bug
+
+v1.26 revision(2023/07/03)
+1.fix grow partition ending lba bug on gpt
+
+v1.25 revision(2023/06/13)
+1.using 0 as fill byte for emmc
+
+v1.24 revision(2022/06/02)
+1.support  env of update.img
+
+v1.23 revision(2022/03/10)
+1.support to cross compile
+2.fix page_2k only work on idblock
+
+v1.22 revision(2021/12/01)
+1.support create new idb image with 4 entrys
+
+v1.21 revision(2021/09/18)
+1.change out_image.img into out_image.bin
+
+v1.2 revision(2021/04/08)
+1.support 356X
+
+v1.1 revision(2021/03/29)
+1.generate emmc and nor burning image without specifying block size and page size
+
+v1.0 revision(2021/02/04)
+1.fix making partition image align bug 
+2.fix overwritten idblock bug
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

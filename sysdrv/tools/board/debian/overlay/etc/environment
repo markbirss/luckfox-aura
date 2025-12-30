@@ -1,0 +1,3 @@
+SYSTEMD_COLORS=0
+PATH="/oem/usr/bin:/oem/usr/sbin:/usr/local/sbin:/usr/ocal/bin:/usr/sbin:/usr/bin:/sbin:/bin:/sbin:/usr/sbin"
+LD_LIBRARY_PATH="/oem/usr/lib:/usr/lib:/lib"

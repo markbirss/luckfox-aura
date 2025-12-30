@@ -1,0 +1,11 @@
+[Unit]
+Description=ntpdate time synchronization
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c 'until ping -c1 pool.ntp.org &>/dev/null; do sleep 1; done; /usr/sbin/ntpdate -u pool.ntp.org'
+
+[Install]
+WantedBy=multi-user.target

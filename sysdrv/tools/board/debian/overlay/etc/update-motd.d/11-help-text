@@ -1,0 +1,5 @@
+#!/bin/sh
+
+printf "\n"
+printf " * Documentation:  https://wiki.luckfox.com\n"
+printf " * Management:     https://www.luckfox.com\n"
